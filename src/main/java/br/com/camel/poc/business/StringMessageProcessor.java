@@ -1,6 +1,7 @@
 package br.com.camel.poc.business;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +13,14 @@ import org.springframework.stereotype.Component;
  * @definition:
  */
 @Component
-public class StringMessageProcessor {
+public class StringMessageProcessor implements Processor {
 
     private Logger logger = Logger.getLogger(getClass());
 
-    public boolean process(Exchange camelExchange) {
-        Boolean result = true;
-
-        //logger.info("Receiving message=" + camelExchange.getIn().getBody());
-
+    public void process(Exchange camelExchange) throws Exception {
         logger.info(String.format("Receiving message=%s, camelExchange=%s", camelExchange.getIn().getBody(),
                 camelExchange));
 
-        return result;
     }
+
 }

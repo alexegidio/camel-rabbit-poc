@@ -1,8 +1,6 @@
 package br.com.camel.poc.infra.camel.routes;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.spring.SpringRouteBuilder;
-import org.springframework.stereotype.Component;
 
 /**
  * @project: camel-rabbit-poc
@@ -17,6 +15,6 @@ public class TestRoute extends RouteBuilder {
 
         from("rabbitmq://localhost:5672/camel-poc-exchange?exchangeType=fanout&autoDelete=false")
                 .unmarshal().string("UTF-8")
-                .beanRef("StringMessageProcessor", "process");
+                .beanRef("stringMessageProcessor", "process");
     }
 }
