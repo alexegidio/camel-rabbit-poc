@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("br.com.uol.billing.camel.poc")
+@ComponentScan("br.com.camel.poc")
 //@PropertySource({"classpath:config-prod.properties","classpath:config-base.properties"})
 @ImportResource({"classpath:application-context.xml","classpath:camel-context.xml"})
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
