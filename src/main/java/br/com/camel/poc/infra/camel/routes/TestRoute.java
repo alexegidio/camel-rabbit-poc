@@ -2,7 +2,6 @@ package br.com.camel.poc.infra.camel.routes;
 
 import br.com.camel.poc.business.StringMessageProcessor;
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @project: camel-rabbit-poc
@@ -17,6 +16,7 @@ public class TestRoute extends RouteBuilder {
 
         from("rabbitmq://localhost:5672/camel-poc-exchange?exchangeType=fanout&autoDelete=false")
                 .unmarshal().string("UTF-8")
-                .bean(StringMessageProcessor.class);
+                .bean(StringMessageProcessor.class)
+                .errorHandler(defaultErrorHandler().maximumRedeliveries(2).redeliveryDelay(3000));
     }
 }

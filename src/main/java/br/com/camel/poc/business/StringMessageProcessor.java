@@ -1,9 +1,11 @@
 package br.com.camel.poc.business;
 
+import br.com.camel.poc.business.exception.RecoverableException;
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -15,11 +17,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class StringMessageProcessor {
 
+    private AtomicInteger count  = new AtomicInteger(3);
+
     private Logger logger = Logger.getLogger(getClass());
 
-    public void process(String message) throws Exception {
+    public void process(Exchange exchange) throws Exception {
 
-        logger.info(String.format("Receiving message=%s", message));
+        if (count.intValue() % 2 == 1) {
+            exchange.setException(new RecoverableException("Unexpected error, try again"));
+            count.incrementAndGet();
+        } else {
+            logger.info(String.format("Receiving message=%s", exchange.getIn().getBody()));
+        }
     }
 
 }
