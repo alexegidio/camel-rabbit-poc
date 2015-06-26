@@ -13,14 +13,13 @@ import org.springframework.stereotype.Component;
  * @definition:
  */
 @Component
-public class StringMessageProcessor implements Processor {
+public class StringMessageProcessor {
 
     private Logger logger = Logger.getLogger(getClass());
 
-    public void process(Exchange camelExchange) throws Exception {
-        logger.info(String.format("Receiving message=%s, camelExchange=%s", camelExchange.getIn().getBody(),
-                camelExchange));
+    public void process(String message) throws Exception {
 
+        logger.info(String.format("Receiving message=%s", message));
     }
 
 }

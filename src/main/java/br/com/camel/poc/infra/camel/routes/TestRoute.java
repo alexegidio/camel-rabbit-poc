@@ -2,9 +2,7 @@ package br.com.camel.poc.infra.camel.routes;
 
 import br.com.camel.poc.business.StringMessageProcessor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * @project: camel-rabbit-poc
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Component;
  * @definition:
  */
 public class TestRoute extends RouteBuilder {
-
 
     @Override
     public void configure() throws Exception {

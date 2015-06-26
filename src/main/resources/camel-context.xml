@@ -4,11 +4,10 @@
        xsi:schemaLocation="
           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
 
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
         <packageScan>
             <package>br.com.camel.poc.infra.camel.routes</package>
         </packageScan>
-
     </camelContext>
 </beans>
